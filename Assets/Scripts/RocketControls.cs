@@ -15,7 +15,7 @@ public class RocketControls : MonoBehaviour {
     AudioSource RocketAudio;
     bool RocketCrashed = false;
     int Coins = 0;
-    float Fuel = 1000.0f;
+    public float Fuel = 1000.0f;
     [SerializeField] float FuelRate = 10;
 
     void Start() {
@@ -35,7 +35,7 @@ public class RocketControls : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space)) {
             RocketRB.AddRelativeForce(Vector3.forward * Time.deltaTime * ThrustForce);
             Fuel -= FuelRate * Time.deltaTime;
-            Debug.Log(Fuel);
+            //Debug.Log(Fuel);
             if (!RocketAudio.isPlaying) {
                 RocketAudio.PlayOneShot(EngineSound);
             }
@@ -75,7 +75,7 @@ public class RocketControls : MonoBehaviour {
         switch (other.gameObject.tag) {
             case "Coin":
                 Coins++;
-                Debug.Log("Coins : " + Coins);
+                //Debug.Log("Coins : " + Coins);
                 Destroy(other.gameObject);
                 break;
             case "Fuel":
